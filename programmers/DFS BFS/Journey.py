@@ -22,6 +22,9 @@ def solution(tickets):
 
 
 
+
+
+
 tickets = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
 tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
 tickets =  [["ICN", "B"], ["B", "ICN"], ["ICN", "A"], ["A", "D"], ["D", "A"]]

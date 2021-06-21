@@ -8,7 +8,7 @@ def solution(n, times):
         medium = left + (right - left) // 2
         fin_num = sum([medium // time for time in times])
 
-        print("midium ::: " + str(medium))
+        print("medium ::: " + str(medium))
         print("fin_num ::: " + str(fin_num))
 
         if fin_num >= n: #fin_num 과 n이 같지 않을 경우가 있다
