@@ -1,30 +1,51 @@
 def solution(number, k):
 
-    answer_list = []
-    now = 0
-    now_max = number
+    stack, num, count, pop_num = [], 0, 0, 0 
+
+    if int(k) == len(number):
+        return "0"
 
     while True:
-        for i in range(len(now_max)):
-            temp_answer = now_max[:i] + now_max[i+1:]
-            #print(temp_answer)
-            answer_list.append(temp_answer)
-        now_max = str(max(list(map(int, answer_list))))
-        answer_list = []
-        now += 1
-        if now == int(k):
+        while stack and stack[-1] and int(stack[-1]) < int(number[num]) and int(k) > count:
+            stack.pop()
+            pop_num += 1
+            count += 1
+        
+        stack.append(number[num])
+        num += 1
+
+        if int(k) == pop_num and len(stack) == len(number) - int(k):
+            break
+        elif num == len(number):
+            stack = stack[:-int(k)]
             break
 
-    return now_max
+    answer = "".join(stack)
+    return answer
+    
+
+# number = "1924"
+# k = "2"
+
+# print(solution(number, k))
+
+# number = "1231234"
+# k = "3"
+
+# print(solution(number, k))
 
 
-number = "1924"
-k = "2"
+# number = "4177252841"
+# k = "4"
 
-number = "1231234"
-k = "3"
+# print(solution(number, k))
 
-number = "4177252841"
-k = "4"
+# number = "1111117"
+# k = "5"
+
+#print(solution(number, k))
+
+number = "1000"
+k = "1"
 
 print(solution(number, k))
