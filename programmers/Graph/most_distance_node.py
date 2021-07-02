@@ -2,31 +2,48 @@ import collections
 import heapq
 def solution(n, edge):
 
-    dist = collections.defaultdict(int)
-    graph = collections.defaultdict(list)
 
-    Q = [1] #거리는 0, 노드는 1 부터 시작
-    dist[1] = 0
-    for node in edge:
-        graph[min(node)].append(max(node))
-    
+   graph = collections.defaultdict(list)
 
-    while Q:
-        now_node = heapq.heappop(Q) #최소 값 출력
-        for node in graph[now_node]:
-            if dist[node] == 0:
-                next_distance = dist[now_node] + 1
-                dist[node] = next_distance
-                heapq.heappush(Q, node)
+   for start, end in edge:
+      graph[start].append(end)
+      graph[end].append(start)
+   
+   print(graph)
 
-    
-    num = collections.defaultdict(int)
+   Q = [(0, 1)]
 
-    for i in dist:
-        num[dist[i]] +=1
-    
-    return num[max(num)]
-    
+   dist = collections.defaultdict(int)
+
+   while Q:
+      time, node = heapq.heappop(Q)
+      if node not in dist:
+         dist[node] = time
+         for v in graph[node]:
+            alt = time + 1
+            heapq.heappush(Q, (alt, v))
+   
+   distance_value = list(dist.values())
+   return distance_value.count(max(distance_value))
+   
+
+
+
+      
+      
+
+
+
+
+
+      
+
+
+
+
+
+
+   return
 
 
 n = 6

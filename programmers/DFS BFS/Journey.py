@@ -1,33 +1,36 @@
+
 import collections
 
 def solution(tickets):
-    ticket_dict = collections.defaultdict(list)
-    visited = []
+    graph = collections.defaultdict(list)
 
-    for start, end in sorted(tickets, reverse=True):
-        ticket_dict[start].append(end)
+    for a, b in sorted(tickets):
+        graph[a].append(b)
+
+    route, stack = [], ["ICN"]
+    while stack:
+        while graph[stack[-1]]:
+            stack.append(graph[stack[-1]].pop(0))
+        route.append(stack.pop())
     
-    def dfs(node):
-
-        nonlocal visited
-        visited.append(node)
-
-        while ticket_dict[node]:
-            dfs(ticket_dict[node].pop())
-
-    
-    dfs("ICN")
-
-    return visited
-
-
-
-
-
+    return route[::-1]
+        
 
 tickets = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
+
 tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
 tickets =  [["ICN", "B"], ["B", "ICN"], ["ICN", "A"], ["A", "D"], ["D", "A"]]
-#tickets = [["ICN", "AAA"], ["ICN", "AAA"], ["ICN", "AAA"], ["AAA", "ICN"], ["AAA", "ICN"]]
-print(sorted(tickets))
+
+tickets = [['ICN','A'],['A','B'],['A','C'],['C','A'],['B','D']]
+
+tickets = [["ICN", "AAA"], ["ICN", "AAA"], ["ICN", "AAA"], ["AAA", "ICN"], ["AAA", "ICN"]]
+tickets = [["ICN", "BOO"], ["ICN", "COO"], ["COO", "DOO"], ["DOO", "COO"], ["BOO", "DOO"], ["DOO", "BOO"], ["BOO", "ICN"], ["COO", "BOO"]]
+
+tickets = [["ICN", "AAA"], ["ICN", "AAA"], ["ICN", "AAA"], ["AAA", "ICN"], ["AAA", "ICN"]]
+tickets = [["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]]
+tickets = [['ICN','AAA'],['ICN','AAA'],['ICN','AAA'],['AAA','ICN'],['AAA','ICN']]
+tickets = [['ICN' ,'B'], ['ICN', 'C'] ,['C', 'D'], ['D', 'ICN']]
+
+tickets = [['ICN', 'B'], ['B', 'C'], ['C', 'ICN'], ['ICN', 'D'], ['ICN', 'E'], ['E', 'F']]
+
 print(solution(tickets))
