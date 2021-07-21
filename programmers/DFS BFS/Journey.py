@@ -4,12 +4,14 @@ import collections
 def solution(tickets):
     graph = collections.defaultdict(list)
 
+    #dict 저장 
     for a, b in sorted(tickets):
         graph[a].append(b)
 
+    #시작
     route, stack = [], ["ICN"]
     while stack:
-        while graph[stack[-1]]:
+        while graph[stack[-1]]: 
             stack.append(graph[stack[-1]].pop(0))
         route.append(stack.pop())
     
@@ -30,7 +32,3 @@ tickets = [["ICN", "AAA"], ["ICN", "AAA"], ["ICN", "AAA"], ["AAA", "ICN"], ["AAA
 tickets = [["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]]
 tickets = [['ICN','AAA'],['ICN','AAA'],['ICN','AAA'],['AAA','ICN'],['AAA','ICN']]
 tickets = [['ICN' ,'B'], ['ICN', 'C'] ,['C', 'D'], ['D', 'ICN']]
-
-tickets = [['ICN', 'B'], ['B', 'C'], ['C', 'ICN'], ['ICN', 'D'], ['ICN', 'E'], ['E', 'F']]
-
-print(solution(tickets))
