@@ -9,17 +9,6 @@ def solution(n):
         
     
     return temp_list[n]
-    
 
-
-
-
-
-    
-
-
-    
-
-
-n = input()
+n = int(input())
 print(solution(int(n)))
