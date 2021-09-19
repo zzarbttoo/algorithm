@@ -81,45 +81,66 @@ def solution(n, start, end, roads, traps):
         visited = defaultdict(lambda : defaultdict(int))
         
         #cost(priority), node, state(trap)
-        priority.append((0, start, first_state))
+        priority.append((-1 , 0, start, first_state))
 
         while priority:
             
             current =  heapq.heappop(priority)
-            weight, now_node, state = current[0], current[1], current[2]
+            before_node, weight, now_node, state = current[0], current[1], current[2], current[3]
 
-            
+            print("before_node ::: "  + str(before_node) + "now_node ::: " + str(now_node))
+            print("is_trap ::: " + str(is_trap))
+
             if now_node == end:
                 return weight
-            
+
             #방문한 적이 있다면 넘어간다 
-            if visited[now_node][state] == 1:
-                continue
+            # if visited[now_node][state] == 1:
+            #     print("hello again")
+            #     continue
                 
             visited[now_node][state] = 1
-            
+
 
             # trap을 켜면 1로 바꿔준다 
             if is_trap[now_node] != 0:
                 is_trap[now_node] *= -1
                 state = ""
-                for key, value in is_trap.items(): 
+                for key, value in is_trap.items():
                     if value != 0:
                         state += str(is_trap[key])
-                visited[now_node][state] == 1
 
+            print(visited)
+            # if visited[now_node][state] == 1:
+            #     print("helloworld 2")
+            #     continue
+
+            visited[now_node][state] = 1
             for next_node in range(1, n + 1):
+
+                if now_node == next_node:
+                    continue
+                
                 #둘중 하나만 함정이 작동
-                if now_node != next_node and (is_trap[now_node] == 1 and is_trap[next_node] != 1) or (is_trap[now_node] != 1 and is_trap[next_node] == 1):
+                if (is_trap[now_node] == 1 and is_trap[next_node] != 1) or (is_trap[now_node] != 1 and is_trap[next_node] == 1):
                     if graph[next_node][now_node] != INF:
-                        heapq.heappush(priority, (weight + graph[next_node][now_node] , next_node, state))
+                        print("nextnext ::: " + str(next_node))
+                        print("next_trap ::: " + str(is_trap))
+                        print("next state ::: " + str(state))
+                        heapq.heappush(priority, (now_node, weight + graph[next_node][now_node] , next_node, state))
                 #둘다 함정이 작동 or 둘다 함정이 아님
-                elif now_node != next_node:
+                else:
                     if graph[now_node][next_node] != INF:
-                        heapq.heappush(priority, (weight + graph[now_node][next_node], next_node, state))
+                        print("nextnext ::: " + str(next_node))
+                        print("next_trap ::: " + str(is_trap))
+                        print("next state ::: " + str(state))
+                        heapq.heappush(priority, (now_node, weight + graph[now_node][next_node], next_node, state))
 
     return dijkstra()
 
 
-print(solution(3, 1, 3, [[1, 2, 2], [3, 2, 3]], [2]))
+#print(solution(4, 1, 4, [[1, 2, 0], [2, 3, 2], [3, 2, 1], [4, 2, 5], [2, 4, 3]], [2]))
+#print(solution(3, 1, 3, [[1, 2, 2], [3, 2, 3]], [2]))
 print(solution(4, 1, 4, [[1, 2, 1], [3, 2, 1], [2, 4, 1]], [2, 3]))
+#print(solution(4, 1, 4, [[1, 2, 1], [3, 2, 3], [2, 4, 2], [4, 2, 5], [2, 4, 5], [1, 4, 5]], [2, 3]))
+#print(solution(2, 1, 2, [[1, 2, 3], [2, 1, 1]], []) )
