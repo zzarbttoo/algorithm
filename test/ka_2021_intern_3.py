@@ -40,16 +40,15 @@
 #     return "".join(temp_list)
 
 
-import heapq
+# import heapq
 
-temp=[]
+# temp=[]
 
-for i in range(3):
-    heapq.heappush(temp, - i)
+# for i in range(3):
+#     heapq.heappush(temp, - i)
 
-print(temp)
-print(temp[0])
-
+# print(temp)
+# print(temp[0])
 import heapq
 
 def solution(n, k, cmd):
@@ -74,13 +73,13 @@ def solution(n, k, cmd):
             if right_heap:
                 heapq.heappush(left_heap, - heapq.heappop(right_heap))
         elif com[0] == "Z":
-            if right_heap and stack[-1] < right_heap[0] :
+            if left_heap and stack[-1] < - left_heap[0] :
                 heapq.heappush(left_heap, - stack.pop())
             else:
                 heapq.heappush(right_heap, stack.pop())
         else:
             temp_num = int(list(com.split())[1])
-            print(temp_num)
+            #print(temp_num)
             if com[0] == "U":
                 for _ in range(temp_num):
                     if left_heap:
