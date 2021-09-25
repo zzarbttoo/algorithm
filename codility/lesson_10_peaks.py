@@ -20,7 +20,7 @@ def solution(A):
     if peak_length == 0: return 0 
     #print(peak_array)
  
-    for block_size in range(peak_array[0] + 1, length + 1):
+    for block_size in range(peak_array[0] + 1, length):
         block_num , possible = divmod(length, block_size)
         if possible != 0:
             continue
