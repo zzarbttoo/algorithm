@@ -16,37 +16,36 @@ public class SilverTwo1206 {
         int[] littleNum = new int[N];
         Arrays.fill(littleNum, 1);
 
-        for(int i = 0 ; i < N ; i ++){
+        for (int i = 0; i < N; i++) {
             avgNum[i] = Double.parseDouble(br.readLine());
-            while(true){
-                Double tempValue = avgNum[i] * littleNum[i];
+//            while(true){
+//                Double tempValue = avgNum[i] * littleNum[i];
+//
+//                System.out.println("littleNum" + littleNum[i]);
+//                System.out.println("tempValue ::: " + tempValue);
+//
+//
+//                if (tempValue.intValue() == tempValue){
+//                    break;
+//                }else{
+//                    littleNum[i] ++;
+//                }
 
-                System.out.println("littleNum" + littleNum[i]);
-                System.out.println("tempValue ::: " + tempValue);
 
-
-                if (tempValue.intValue() == tempValue){
-                    break;
-                }else{
-                    littleNum[i] ++;
-                }
-
-            }
         }
 
-        //System.out.println(Arrays.toString(avgNum));
-        //System.out.println(Arrays.toString(littleNum));
+    //System.out.println(Arrays.toString(avgNum));
+    //System.out.println(Arrays.toString(littleNum));
 
-        int answer = 0;
+    int answer = 0;
 
-        for(int i = 0; i < N; i ++){
-            answer = gcd(Math.max(littleNum[i], answer), Math.min(littleNum[i], answer));
-        }
+//        for(int i = 0; i < N; i ++){
+//            answer = gcd(Math.max(littleNum[i], answer), Math.min(littleNum[i], answer));
+//        }
+//
+//        System.out.println(answer);
 
-        System.out.println(answer);
-
-
-    }
+}
 
 
     public static int gcd(int a, int b){
