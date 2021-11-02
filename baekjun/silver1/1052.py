@@ -48,11 +48,6 @@ def solution(N, K):
     print(answer)
 
 
-
-
-
-
-
 N, K = map(int, input().split())
 solution(N, K)
 
