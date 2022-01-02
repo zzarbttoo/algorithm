@@ -29,22 +29,29 @@ def solution(key, lock):
         temp_lock = [0 for _ in range(3 * N)]
         new_lock.append(temp_lock)
     
-    for i in range(3 * N - M + 1):
-        for j in range(3 * N - M + 1):
+    open_lock = [1] * N
+    
+    for i in range(2 * N):
+        for j in range(2 * N):
             for rev_key in keys:
                 temp_lock = copy.deepcopy(new_lock)
                 for x in range(M):
                     for y in range(M):
                         if x + M < 3 * N - 1 and y + M < 3 * N - 1:
-                            temp_lock[x + i][y + j] += rev_key[x][y]
+                            if  N <=x + i <= 2* N and N <= y + j <= 2* N:
+                                temp_lock[x + i][y + j] += rev_key[x][y]
                             
                     answer = True
                     
                     for t in range(N):
-                        if temp_lock[N + t][N : N + N] != [1]* N:
+                        if temp_lock[N + t][N : N + N] != open_lock:
                             answer = False
                     if answer == True:
                         return True
+                    
+                    if i >= 2 * N - 1  and j >= 2 * N - 1:
+                        return False
+                    
     return False
             
             
