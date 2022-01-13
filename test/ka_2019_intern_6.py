@@ -56,7 +56,7 @@
 #     return answer
 #     print(answer)
 
-#dfs : 시간 초과 
+# dfs : 시간 초과 
 # from collections import defaultdict
 # import sys
 # sys.setrecursionlimit(10 ** 6)
@@ -110,7 +110,7 @@
 #                 dfs(next, now_visited[:])
     
 #     init_vi = [-1 for _ in range(n)]
-#     dfs(0, init_vi)
+    dfs(0, init_vi)
         
         
 #     return answer

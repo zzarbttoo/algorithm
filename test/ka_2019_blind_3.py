@@ -8,7 +8,6 @@ def solution(relation):
     row_len = len(relation)
     col_len = len(relation[0])
     col_list = [str(i) for i in range(0, col_len)]
-    com_list = []
     vari_list = []
     visited = defaultdict(bool)
 

@@ -32,7 +32,5 @@ def solution(food_times, k):
         temp.sort()
         return temp[(k - clock) % len(temp)]
         
-        
-        
     return -1 
         
