@@ -1,4 +1,5 @@
 # https://www.acmicpc.net/problem/2174
+# https://nordic.icpc.io/ncpc2005/problems_NCPC2005.pdf
 
 from sys import stdin
 from collections import defaultdict
@@ -21,23 +22,23 @@ def solution():
         order = stdin.readline().split()
         X, Y, D = int(order[0]), int(order[1]), order[2]
         if  X < 0 or X > A or Y < 0 or Y > B:
-            print(error_w(idx + 1)) 
+            #print(error_w(idx + 1)) 
             return 
 
         if location[X][Y] == -1:
             location[X][Y] = idx + 1 
             robot[idx + 1] = [X, Y, D]
         else:
-            print(error_r(idx + 1, location[X][Y])) 
+            #print(error_r(idx + 1, location[X][Y])) 
             return 
     
     order_list = []
     for _ in range(M):
         order_list.append(stdin.readline().split())
 
-    direction = {'E' : [1, 0], 'N' : [0, -1], 'W' : [-1, 0], 'S' : [0, 1]}
-    l = {'E' : 'S', 'S' : 'W', 'W' : 'N', 'N' : 'E'}
-    r = {'N' : 'W', 'W' : 'S', 'S' : 'E', 'E' : 'N'}
+    direction = {'E' : [1, 0], 'N' : [0, 1], 'W' : [-1, 0], 'S' : [0, -1]}
+    l = {'E' : 'N', 'S' : 'E', 'W' : 'S', 'N' : 'W'}
+    r = {'N' : 'E', 'W' : 'N', 'S' : 'W', 'E' : 'S'}
 
     for order in order_list:
         #print("order ::: " + str(order))
