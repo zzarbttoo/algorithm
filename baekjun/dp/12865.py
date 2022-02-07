@@ -28,9 +28,6 @@ def solution():
     print(memo[N - 1][K])
 
 
-
-
-
 solution()
 
 

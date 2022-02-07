@@ -2,11 +2,11 @@ from sys import stdin
 from bisect import bisect_left
 
 def solution():
-    #N = int(stdin.readline())
-    #A = list(map(int, stdin.readline().split()))
+    N = int(stdin.readline())
+    A = list(map(int, stdin.readline().split()))
 
-    N, A = 8, [10, 20, 30 ,5, 10, 20, 30, 40]
-    N, A = 10, [4, 7, 10, 3, 1, 8, 7, 2, 5, 7]
+    #N, A = 8, [10, 20, 30 ,5, 10, 20, 30, 40]
+    #N, A = 10, [4, 7, 10, 3, 1, 8, 7, 2, 5, 7]
 
     memo = [0]
 
