@@ -70,12 +70,17 @@ def solution():
 
     time = 0
 
+    last = [[0 for _ in range(M)] for _ in range(N)]
 
     while True:
-
+        
         if ct(W) >= 2: return time
+        if W == last: return 0
         time += 1
 
+
         W = melt(W)
+        
+
 
 print(solution())
