@@ -9,11 +9,12 @@ def input_():
         T.append(list(map(int, sys.stdin.readline().split())))
     
     return n, T
+
 from collections import defaultdict 
 
 def solution():
     n, T = input_()
-    answer = -1
+    answer = 0
     direction = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
     m = defaultdict(lambda : defaultdict(lambda : -1))

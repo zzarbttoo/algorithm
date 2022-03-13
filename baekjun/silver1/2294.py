@@ -11,9 +11,9 @@ def input_():
 from collections import defaultdict
 
 def solution():
-    #n, k, V = input_()
-    n, k = 3, 15
-    V = [1, 5, 12]
+    n, k, V = input_()
+    #n, k = 3, 15
+    #V = [1, 5, 12]
 
     memo = defaultdict(lambda : float('INF'))
     memo[0] = 0

@@ -42,6 +42,7 @@ def solution():
                 dfs(y, x)
             if count != 0: answer.append(count)
 
+    answer.sort()
     print(len(answer))
     for a in answer:
         print(a)

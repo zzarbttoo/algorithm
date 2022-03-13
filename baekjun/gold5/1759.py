@@ -5,11 +5,9 @@ def input_():
     W = list(stdin.readline().split())
     return L, C, W
 
-from collections import defaultdict
 import itertools
 
 def solution():
-    #L, C, W = 4, 6, ['a', 't', 'c', 'i', 's', 'w']
     L, C, W = input_()
     vo = set(['a', 'i', 'e', 'o', 'u'])
     n_v, n_c = [], []
@@ -28,9 +26,6 @@ def solution():
         t_c += list(itertools.combinations(n_c, j))
     
     answer = []
-
-    print(t_v)
-    print(t_c)
 
     for v in t_v:
         for c in t_c:
