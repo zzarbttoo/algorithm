@@ -47,32 +47,6 @@ def solution():
     
     print(answer)
                 
-    
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-    
-
-
-    
-
 
 
 solution()

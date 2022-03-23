@@ -28,6 +28,9 @@ def solution():
         if answer > t: answer = t
     print(answer)
 
+    if answer == float('INF'): print(-1)
+
+
     
 solution()
 
