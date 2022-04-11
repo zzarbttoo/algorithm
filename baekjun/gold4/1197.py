@@ -5,7 +5,7 @@ def solution():
     V, E = map(int, input().split())
     L = defaultdict(list)
 
-    for _ in range(V):
+    for _ in range(E):
         A, B, C = map(int, input().split())
         L[A].append([C, B])
         L[B].append([C, A])
@@ -19,7 +19,7 @@ def solution():
         now = heapq.heappop(heap)
         weight, node = now[0], now[1]
 
-        if cnt == E:
+        if cnt == V:
             break
 
         if visited[node] == False:

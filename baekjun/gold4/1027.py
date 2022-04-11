@@ -22,7 +22,7 @@ def solution():
         sum = 0
         b_n = float('INF')
         for f in range(b - 1, -1, -1):
-            if b_n < incline[b][f]: continue
+            if b_n <= incline[b][f]: continue
             b_n = incline[b][f]
             print(b_n)
             sum += 1
