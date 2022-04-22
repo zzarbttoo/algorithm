@@ -1,30 +1,43 @@
 from collections import defaultdict
+import heapq
 
-def solution(n, s, a, b, fares):
+def solution(n, start, end, roads, traps):
     
-    fee = defaultdict(lambda : defaultdict(lambda : float("INF")))
-    answer = float("INF")
+    traps = set(traps)
+    l = defaultdict(list)
     
-    for fare in fares:
-        fee[fare[0]][fare[1]] = fare[2]
-        fee[fare[1]][fare[0]] = fare[2]
+    for road in roads:
+        l[road[0]].append([road[2], road[1], 0])
+        l[road[1]].append([road[2], road[0], 1])
+    
+    v = defaultdict(lambda : defaultdict(lambda : float('INF')))
+    heap = []
+    
+    heapq.heappush(heap, [0, start, 0]) #가중치, 노드, 스위치
+    
+    while heap:
+        wei, now, sw = heapq.heappop(heap)
+        if now == end:
+            return wei
         
-    for i in range(1, n + 1): fee[i][i] = 0
-    
-    for k in range(1, n + 1):
-        for i in range(1, n + 1):
-            for j in range(1, n + 1):
-                #조건문 추가 안할 시 시간 초과 발생
-                if fee[i][j] > fee[i][k] + fee[k][j]: fee[i][j] = fee[i][k] + fee[k][j]
-    
+        if now in traps: #toggle
+            sw ^= (1 << now)
         
-    for k in range(1, n + 1):
-        answer = min(fee[a][k] + fee[b][k] + fee[k][s], answer)
-    
-    return answer
+        if v[now][sw] > wei: 
+            v[now][sw] = wei
+        else: 
+            continue
         
-        
-        
-    
-    
-    
+        for next in l[now]:
+            next_wei = wei + next[0]
+            #둘다 켜져있거나/꺼져 있거나 
+            if ((sw & (1 << now)) == 0 and (sw & (1 << next[1])) == 0) or ((sw & (1 << now)) != 0 and (sw & (1 << next[1])) != 0): #둘다 꺼짐: #둘다 꺼짐
+                if next[2] == 0:
+                    heapq.heappush(heap, [next_wei, next[1] ,sw])
+            else: #하나만 켜져있음
+                if next[2] == 1:
+                    heapq.heappush(heap, [next_wei, next[1] ,sw])
+            
+            
+            
+            
