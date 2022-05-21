@@ -4,7 +4,6 @@ def solution(stones, k):
     answer = 0
     
     while start <= end:
-        temp = []
         mid = (start + end) // 2
         cnt = 0
         pos = True

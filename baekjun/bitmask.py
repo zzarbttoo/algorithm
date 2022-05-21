@@ -3,11 +3,17 @@
 
 
 #값 추가 
-now = 1 << 1
+now = 0
 now += 1 << 2
+print(now)
+now += 1 << 2
+print(now)
+now -= 1 << 2 
+print(now)
+
+
 now +=  1 << 4
 
-now += ~(1 << 2)
 
 print(bin(now))
 
@@ -19,3 +25,4 @@ print(bin(now))
 print(now & (1 << 3)) # 없음
 print(now & (1 << 2)) # 있음 
 
+print()
