@@ -19,7 +19,7 @@ def solution():
     for i in range(1, n):
         memo[i] = max(memo[i - 1], memo[i - 3] + G[i - 1] + G[i], memo[i - 2] + G[i])
 
-    print(memo[n - 1])
+    return memo[n - 1]
 
 
-solution()
+print(solution())

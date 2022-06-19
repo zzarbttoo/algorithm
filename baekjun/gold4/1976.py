@@ -22,15 +22,13 @@ def solution():
             for j in range(N):
                 D[i + 1][j + 1] = min(D[i + 1][j + 1], D[i + 1][k + 1] + D[k + 1][j + 1])
     
-    print(D)
-
     for i in range(M - 1):
         start, end = P[i], P[i + 1]
-        if D[start][end] == float('INF'):
+        if D[start][end] == float('INF') and start != end:
             return "NO"
 
     return "YES"
-    
+
 print(solution())
 
 

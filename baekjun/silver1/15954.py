@@ -17,6 +17,7 @@ def solution():
         for j in range(i + K - 1, N):
             n = j - i + 1
             print(n)
+            
 
 
 
