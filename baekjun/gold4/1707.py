@@ -1,6 +1,5 @@
 from collections import defaultdict
 from collections import deque
-from operator import ne
 
 def test_case():
 
@@ -14,20 +13,23 @@ def test_case():
         con[N1].append(N2)
         con[N2].append(N1)
 
-    queue = deque([1]) 
-    color[1] = 1 #1번 노드는 무조건 1번색
+    queue = deque([]) 
 
-    while queue:
-        now_node = queue.popleft()
-        
-        for next_node in con[now_node]:
-            print(1, now_node, next_node, color[next_node], color[now_node])
-            if next_node == 0:
-                queue.append(next_node)
-                color[next_node] = oppo[color[now_node]]
-            elif color[next_node] != color[now_node]:
-                return 'NO'
-            print(2, now_node, next_node, color[next_node], color[now_node])
+    for node in range(1, V + 1):
+        # print("node ::: " + str(node))
+        if color[node] == 0:
+            color[node] = 1
+            queue.append(node)
+
+            while queue:
+                now_node = queue.popleft()
+
+                for next_node in con[now_node]:
+                    if color[next_node] == 0:
+                        queue.append(next_node)
+                        color[next_node] = oppo[color[now_node]]
+                    elif color[next_node] == color[now_node]:
+                        return 'NO'
 
     return 'YES'
 
